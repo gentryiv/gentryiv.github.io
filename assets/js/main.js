@@ -23,6 +23,78 @@ const projectData = {
   }
 };
 
+// Carousel Function Definition
+function initCarousel() {
+  const slides = document.querySelectorAll(".carousel-slide");
+  const prevBtn = document.getElementById("carousel-prev");
+  const nextBtn = document.getElementById("carousel-next");
+  const dotsContainer = document.getElementById("carousel-dots");
+  const carouselContainer = document.getElementById("about-carousel");
+  
+  if (!slides.length || !dotsContainer) return;
+
+  let currentIndex = 0;
+  let slideInterval;
+
+  // Render navigation dots dynamically
+  slides.forEach((_, idx) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (idx === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(idx));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll(".dot");
+
+  function updateSlides() {
+    slides.forEach((slide, idx) => {
+      slide.classList.toggle("active", idx === currentIndex);
+    });
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle("active", idx === currentIndex);
+    });
+  }
+
+  function goToSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
+    updateSlides();
+    resetTimer();
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSlides();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateSlides();
+  }
+
+  function startTimer() {
+    slideInterval = setInterval(nextSlide, 5000); // 5 second rotation
+  }
+
+  function resetTimer() {
+    clearInterval(slideInterval);
+    startTimer();
+  }
+
+  if (nextBtn && prevBtn) {
+    nextBtn.addEventListener("click", () => { nextSlide(); resetTimer(); });
+    prevBtn.addEventListener("click", () => { prevSlide(); resetTimer(); });
+  }
+
+  if (carouselContainer) {
+    carouselContainer.addEventListener("mouseenter", () => clearInterval(slideInterval));
+    carouselContainer.addEventListener("mouseleave", startTimer);
+  }
+
+  startTimer();
+}
+
+// Main Initialization on DOM Load
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll("[data-tab]");
   const sections = document.querySelectorAll(".section-content");
@@ -84,33 +156,4 @@ document.addEventListener("DOMContentLoaded", () => {
       <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7;">
         ${data.description}
       </p>
-      <a href="${data.repoUrl}" target="_blank" style="display: inline-block; background: var(--accent-blue); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
-        View Repository on GitHub
-      </a>
-    `;
-
-    modal.classList.add("active");
-  }
-
-  function closeModal() {
-    modal.classList.remove("active");
-    modalBody.innerHTML = "";
-  }
-
-  // Attach card click handlers
-  document.querySelectorAll("[data-project-id]").forEach(element => {
-    element.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const projectId = element.getAttribute("data-project-id");
-      openProjectModal(projectId);
-    });
-  });
-
-  modalClose.addEventListener("click", closeModal);
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
-  });
-});
+      <a href="${data
