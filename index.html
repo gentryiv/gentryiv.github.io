@@ -72,13 +72,37 @@
       <!-- Dynamic Sections -->
       <main>
         
-        <!-- About Section -->
-        <section id="about" class="section-content active">
+       <!-- About Section -->
+          <section id="about" class="section-content active">
           <h2 class="section-title">About Me</h2>
           <p>
             Electrical Engineering student specializing in embedded systems, digital hardware design, signals, and bionic control interfaces. Experienced in MCU firmware development, board layout, and time-series telemetry analysis.
           </p>
-        </section>
+
+          <!-- Interactive Carousel -->
+            <div class="carousel-container" id="about-carousel">
+    
+              <div class="carousel-slide active">
+                <img src="assets/images/slide1.jpg" alt="Embedded Systems Bench">
+              <p class="carousel-caption">Firmware testing and hardware-in-the-loop debugging on custom microcontroller boards.</p>
+              </div>
+
+                <div class="carousel-slide">
+              <img src="assets/images/slide2.jpg" alt="Avionics Integration">
+                <p class="carousel-caption">Assembling aerial ground units and routing telemetry interfaces.</p>
+              </div>
+
+            <div class="carousel-slide">
+              <img src="assets/images/slide3.jpg" alt="Athletic Training">
+              <p class="carousel-caption">Distance running and endurance training outside of engineering projects.</p>
+              </div>
+
+              <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous Slide">&#10094;</button>
+              <button class="carousel-btn next" id="carousel-next" aria-label="Next Slide">&#10095;</button>
+
+              <div class="carousel-dots" id="carousel-dots"></div>
+          </div>
+          </section>
 
         <!-- Integrated Resume Section -->
         <section id="resume" class="section-content">
