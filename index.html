@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Portfolio</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Persistent Sidebar -->
+    <aside class="sidebar">
+      <div class="profile-avatar"></div>
+      <h1 class="profile-name">Your Name</h1>
+      <p class="profile-title">Electrical & Embedded Engineer</p>
+      
+      <ul class="contact-list">
+        <li class="contact-item">
+          <strong>Email</strong>
+          <a href="mailto:your.email@example.com">your.email@example.com</a>
+        </li>
+        <li class="contact-item">
+          <strong>Location</strong>
+          Atlanta, GA
+        </li>
+        <li class="contact-item">
+          <strong>GitHub</strong>
+          <a href="https://github.com" target="_blank">github.com/yourhandle</a>
+        </li>
+        <li class="contact-item">
+          <strong>LinkedIn</strong>
+          <a href="https://linkedin.com" target="_blank">linkedin.com/in/yourhandle</a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Shell Container -->
+    <div class="main-shell">
+      
+      <!-- Top Navigation -->
+      <nav class="navbar">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a class="nav-link active" data-tab="about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="resume">Resume</a>
+          </li>
+          
+          <!-- Projects Dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-tab="projects">
+              Projects <span style="font-size: 0.7rem;">▼</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a data-tab="projects">All Projects Overview</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a data-project-id="omniblade">OmniBlade Controller</a></li>
+              <li><a data-project-id="cable-tester">SAMD20 Cable Tester</a></li>
+              <li><a data-project-id="gait-analysis">Gait Signal Processing</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-tab="coursework">Coursework</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Dynamic Sections -->
+      <main>
+        
+        <!-- About Section -->
+        <section id="about" class="section-content active">
+          <h2 class="section-title">About Me</h2>
+          <p>
+            Electrical Engineering student specializing in embedded systems, digital hardware design, signals, and bionic control interfaces. Experienced in MCU firmware development, board layout, and time-series telemetry analysis.
+          </p>
+        </section>
+
+        <!-- Integrated Resume Section -->
+        <section id="resume" class="section-content">
+          <h2 class="section-title">Resume</h2>
+          
+          <h3 style="color: var(--accent-cyan); margin-bottom: 1rem;">Experience</h3>
+          <div class="resume-timeline">
+            <article class="timeline-item">
+              <h4 class="timeline-title">Engineering Intern</h4>
+              <p class="timeline-meta">Earthly Dynamics Center | Aug 2026 – Present</p>
+              <p>Assembled aerial ground units, integrated avionics hardware, and configured brushless motor control telemetry.</p>
+            </article>
+            <article class="timeline-item">
+              <h4 class="timeline-title">Engineering Intern</h4>
+              <p class="timeline-meta">Sigma Defense | May 2026 – Aug 2026</p>
+              <p>Architected data-logging and time-synchronization telemetry pipelines for edge computer vision applications.</p>
+            </article>
+          </div>
+
+          <h3 style="color: var(--accent-cyan); margin-top: 2rem; margin-bottom: 1rem;">Technical Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-tag">C / C++</div>
+            <div class="skill-tag">Python</div>
+            <div class="skill-tag">ESP32 / SAMD20</div>
+            <div class="skill-tag">Altium / KiCad</div>
+            <div class="skill-tag">MATLAB</div>
+            <div class="skill-tag">Linux / Manjaro</div>
+          </div>
+        </section>
+
+        <!-- Projects Grid Section -->
+        <section id="projects" class="section-content">
+          <h2 class="section-title">Projects</h2>
+          <div class="project-grid">
+            
+            <!-- Project Card 1 -->
+            <article class="project-card" data-project-id="omniblade">
+              <div class="project-thumb"></div>
+              <div class="project-info">
+                <h3 class="project-title">OmniBlade Gesture Controller</h3>
+                <p class="project-desc">Wearable motion-tracking game controller utilizing ESP32, MPU-6050 IMU, and custom sensor fusion.</p>
+                <div class="project-tags">
+                  <span class="tag">ESP32</span>
+                  <span class="tag">C++</span>
+                  <span class="tag">IMU</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article class="project-card" data-project-id="cable-tester">
+              <div class="project-thumb"></div>
+              <div class="project-info">
+                <h3 class="project-title">SAMD20 Cable Tester</h3>
+                <p class="project-desc">Ten-pin hardware diagnostic tool driven by low-level register configuration on Microchip ATSAMD20.</p>
+                <div class="project-tags">
+                  <span class="tag">ATSAMD20</span>
+                  <span class="tag">Embedded C</span>
+                  <span class="tag">Registers</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article class="project-card" data-project-id="gait-analysis">
+              <div class="project-thumb"></div>
+              <div class="project-info">
+                <h3 class="project-title">Plantar Gait Analysis</h3>
+                <p class="project-desc">DSP pipeline computing FFT and Power Spectral Density over sensory substitution force datasets.</p>
+                <div class="project-tags">
+                  <span class="tag">MATLAB</span>
+                  <span class="tag">DSP</span>
+                  <span class="tag">Biomechanics</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- Coursework Section -->
+        <section id="coursework" class="section-content">
+          <h2 class="section-title">Coursework</h2>
+          <ul style="list-style-type: square; padding-left: 1.25rem; color: var(--text-muted);">
+            <li>Linear Control Systems & State-Space Modeling</li>
+            <li>Digital Signal Processing & Fast Fourier Transforms</li>
+            <li>Microcontroller System Design & Firmware Architecture</li>
+            <li>RF Systems, Impedance Matching, & S-Parameters</li>
+          </ul>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal Overlay Container -->
+  <div class="modal-overlay" id="project-modal">
+    <div class="modal-container">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div id="modal-body">
+        <!-- Content injected dynamically via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
