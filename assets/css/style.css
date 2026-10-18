@@ -1,6 +1,6 @@
 :root {
-  /* Studio Gradient matched to HomePagePicture.jpg backdrop profile */
-  --bg-gradient: linear-gradient(180deg, #f0f0f3 0%, #e2e2e6 40%, #cdced4 100%);
+  /* Studio Gradient calibrated to exact color curve of HomePagePicture.jpg */
+  --bg-gradient: linear-gradient(180deg, #f0f0f3 0%, #e2e2e7 350px, #d2d2d8 100%);
 
   /* Primary Brand Palette: Georgia Tech Navy & Tech Gold */
   --gt-navy: #003057;
@@ -10,10 +10,10 @@
   /* Sidebar Specific Colors */
   --sidebar-bg: var(--gt-navy);
   --sidebar-text: #ffffff;
-  --sidebar-muted: #cbd5e0;
+  --sidebar-muted: var(--gt-gold);
   --sidebar-link: var(--gt-gold);
 
-  /* Unboxed Main Page Typography (Black / Dark Charcoal Details) */
+  /* Typography Colors */
   --text-main: #111111;
   --text-muted: #333333;
   --text-label: var(--gt-navy);
@@ -105,7 +105,7 @@ body {
 
 .contact-item {
   font-size: 0.85rem;
-  color: var(--sidebar-muted);
+  color: var(--gt-gold);
   margin-bottom: 0.75rem;
   word-break: break-all;
 }
@@ -137,7 +137,7 @@ body {
   position: relative;
 }
 
-/* Top Navigation Bar: Default Navy, Hover & Active Gold */
+/* Top Navigation Bar */
 .navbar {
   display: flex;
   justify-content: flex-end;
@@ -149,7 +149,7 @@ body {
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 1.75rem;
   align-items: center;
 }
 
@@ -158,7 +158,7 @@ body {
 }
 
 .nav-link {
-  color: var(--gt-navy);
+  color: var(--gt-navy) !important;
   text-decoration: none;
   font-weight: 700;
   font-size: 1.05rem;
@@ -170,7 +170,7 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--gt-gold);
+  color: var(--gt-gold) !important;
 }
 
 .nav-link.active::after {
@@ -224,13 +224,14 @@ body {
   align-items: center;
   text-align: center;
   gap: 1.25rem;
-  padding: 1rem 0;
+  padding: 0;
 }
 
 .hero-image-container {
   width: 100%;
   max-width: 480px;
   position: relative;
+  background: transparent;
 }
 
 .hero-img-fade {
@@ -238,8 +239,10 @@ body {
   max-height: 460px;
   object-fit: cover;
   border-radius: 0;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 98%);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 98%);
+  border: none;
+  box-shadow: none;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 98%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 98%);
 }
 
 .hero-heading {
@@ -565,258 +568,6 @@ body {
   .navbar {
     justify-content: center;
   }
-}}
-
-/* Top Navigation */
-.navbar {
-  display: flex;
-  justify-content: flex-end;
-  border-bottom: 2px solid var(--border-subtle);
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
 }
-
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.nav-item {
-  position: relative;
-}
-
-.nav-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: color var(--transition-fast);
-  cursor: pointer;
-  padding: 0.5rem 0;
-}
-
-.nav-link:hover,
-.nav-link.active {
-  color: var(--accent-cyan);
-}
-
-/* Section Common Styling */
-.section-content {
-  display: none;
-}
-
-.section-content.active {
-  display: block;
-  animation: fadeIn 0.25s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.section-title {
-  font-size: 1.75rem;
-  color: var(--text-main);
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.section-title::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 3px;
-  background: var(--accent-cyan);
-  margin-top: 0.4rem;
-  border-radius: 2px;
-}
-
-/* Home Hero Landing */
-.home-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.25rem;
-  padding: 1rem 0;
-}
-
-.hero-image-container {
-  width: 100%;
-  max-width: 480px;
-  position: relative;
-}
-
-.hero-img-fade {
-  width: 100%;
-  max-height: 440px;
-  object-fit: cover;
-  border-radius: var(--radius-lg);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
-}
-
-.hero-heading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 0.75rem;
-}
-
-.pronunciation-block {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.pronounce-label {
-  font-size: 1.2rem;
-  color: var(--accent-cyan);
-  font-family: var(--font-mono);
-  font-weight: 600;
-}
-
-.receipt-img {
-  max-width: 220px;
-  height: auto;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 6px 16px rgba(0, 48, 87, 0.15);
-}
-
-/* Carousel / Slideshow Component */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 850px;
-  margin: 2rem auto 0;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 8px 20px rgba(0, 48, 87, 0.08);
-}
-
-.carousel-slide {
-  display: none;
-  text-align: center;
-  padding: 1.25rem;
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-.carousel-slide.active {
-  display: block;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-}
-
-.carousel-caption {
-  margin-top: 0.85rem;
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.4;
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 45%;
-  transform: translateY(-50%);
-  background: rgba(0, 48, 87, 0.8);
-  border: none;
-  color: #ffffff;
-  font-size: 1.2rem;
-  padding: 0.4rem 0.75rem;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background var(--transition-fast);
-  z-index: 10;
-}
-
-.carousel-btn:hover {
-  background: var(--accent-cyan);
-}
-
-.carousel-btn.prev { left: 0.75rem; }
-.carousel-btn.next { right: 0.75rem; }
-
-.carousel-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 0;
-}
-
-.dot {
-  width: 9px;
-  height: 9px;
-  background: var(--border-subtle);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background var(--transition-fast);
-}
-
-.dot.active {
-  background: var(--accent-cyan);
-}
-
-/* Resume Section Styling */
-.resume-timeline {
-  border-left: 2px solid var(--border-subtle);
-  padding-left: 1.5rem;
-  margin-left: 0.5rem;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  left: calc(-1.5rem - 5px);
-  top: 6px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-cyan);
-}
-
-.timeline-title {
-  font-size: 1.1rem;
-  color: var(--text-main);
-}
-
-.timeline-meta {
-  font-size: 0.85rem;
-  color: var(--accent-cyan);
-  font-family: var(--font-mono);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-.skill-tag {
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  padding: 0.4rem 0.8rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.85rem;
   font-family: var(--font-mono);
   color: var(--text-main);
