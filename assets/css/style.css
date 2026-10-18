@@ -1,6 +1,6 @@
 :root {
-  /* Exact Studio Backdrop Color (#e7e8ec) held constant through 500px to match photo height */
-  --bg-gradient: linear-gradient(180deg, #e7e8ec 0%, #e7e8ec 500px, #d5d7de 100%);
+  /* Match the exact high-light studio backdrop of the portrait (#ebedf1) and gently transition it down */
+  --bg-gradient: linear-gradient(180deg, #ebedf1 0%, #ebedf1 460px, #d2d6df 100%);
 
   /* Primary Brand Palette: Georgia Tech Navy & Tech Gold */
   --gt-navy: #003057;
