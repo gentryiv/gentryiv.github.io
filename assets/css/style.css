@@ -1,6 +1,6 @@
 :root {
-  /* Studio Gradient calibrated to exact color curve of HomePagePicture.jpg */
-  --bg-gradient: linear-gradient(180deg, #f0f0f3 0%, #e2e2e7 350px, #d2d2d8 100%);
+  /* Studio Backdrop Gradient aligned with HomePagePicture.jpg lighting profile */
+  --bg-gradient: linear-gradient(180deg, #f4f4f6 0%, #e5e5e9 450px, #dadae0 100%);
 
   /* Primary Brand Palette: Georgia Tech Navy & Tech Gold */
   --gt-navy: #003057;
@@ -241,8 +241,9 @@ body {
   border-radius: 0;
   border: none;
   box-shadow: none;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 98%);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 98%);
+  /* Reduced bottom mask fade to retain shirt details down to 85% height */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
 }
 
 .hero-heading {
@@ -569,5 +570,3 @@ body {
     justify-content: center;
   }
 }
-  font-family: var(--font-mono);
-  color: var(--text-main);
