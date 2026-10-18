@@ -5,7 +5,7 @@
   /* Primary Brand Palette: Georgia Tech Navy & Tech Gold */
   --gt-navy: #003057;
   --gt-gold: #B3A369;
-  --gt-gold-hover: #96854d;
+  --gt-white-hover: #ffffff;
 
   /* Sidebar Specific Colors */
   --sidebar-bg: var(--gt-navy);
