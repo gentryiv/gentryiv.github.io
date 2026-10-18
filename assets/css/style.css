@@ -123,7 +123,7 @@ body {
 }
 
 .contact-item a:hover {
-  color: #eaaa00;
+  color: --gt-white-hover;
   text-decoration: underline;
 }
 
