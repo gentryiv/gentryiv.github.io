@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Engineering Portfolio</title>
+  <title>Gentry Arnette - Portfolio</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
     <!-- Persistent Sidebar -->
     <aside class="sidebar">
       <img src="assets/images/Profile Picture ZoomedEvenMore.jpg" alt="Profile" class="profile-avatar">
-      <h1 class="profile-name">Your Name</h1>
+      <h1 class="profile-name">Gentry Arnette</h1>
       <p class="profile-title">Electrical Engineer</p>
       
       <ul class="contact-list">
@@ -39,30 +39,21 @@
     <!-- Main Shell Container -->
     <div class="main-shell">
       
-      <!-- Top Navigation -->
+      <!-- Top Navigation (Direct Tabs, No Dropdowns) -->
       <nav class="navbar">
         <ul class="nav-menu">
           <li class="nav-item">
-            <a class="nav-link active" data-tab="about">About</a>
+            <a class="nav-link active" data-tab="home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="about">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-tab="resume">Resume</a>
           </li>
-          
-          <!-- Projects Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link" data-tab="projects">
-              Projects <span style="font-size: 0.7rem;">▼</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a data-tab="projects">All Projects Overview</a></li>
-              <li class="dropdown-divider"></li>
-              <li><a data-project-id="omniblade">OmniBlade Controller</a></li>
-              <li><a data-project-id="cable-tester">SAMD20 Cable Tester</a></li>
-              <li><a data-project-id="gait-analysis">Gait Signal Processing</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" data-tab="projects">Projects</a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" data-tab="coursework">Coursework</a>
           </li>
@@ -72,37 +63,53 @@
       <!-- Dynamic Sections -->
       <main>
         
-       <!-- About Section Carousel -->
-<section id="about" class="section-content active">
-  <h2 class="section-title">About Me</h2>
-  <p>
-    Electrical Engineering student specializing in embedded systems, digital hardware design, signals, and bionic control interfaces. Experienced in MCU firmware development, board layout, and time-series telemetry analysis.
-  </p>
+        <!-- Home Landing Section -->
+        <section id="home" class="section-content active">
+          <div class="home-hero">
+            <div class="hero-image-container">
+              <img src="assets/images/HomePagePicture.jpg" alt="Gentry Arnette" class="hero-img-fade">
+            </div>
+            <div class="hero-text-content">
+              <h1 class="hero-heading">Hi, I'm Gentry</h1>
+              <div class="pronunciation-block">
+                <span class="pronounce-label">Pronounced:</span>
+                <img src="assets/images/PronouncedJentree.JPEG" alt="Pronounced Jentree Receipt" class="receipt-img">
+              </div>
+            </div>
+          </div>
+        </section>
 
-  <!-- Interactive Carousel -->
-  <div class="carousel-container" id="about-carousel">
-    
-    <div class="carousel-slide active">
-      <img src="assets/images/ManUGameFam.JPEG" alt="My Family">
-      <p class="carousel-caption">My family description.</p>
-    </div>
+        <!-- About Section -->
+        <section id="about" class="section-content">
+          <h2 class="section-title">About Me</h2>
+          <p>
+            Electrical Engineering student specializing in embedded systems, digital hardware design, signals, and bionic control interfaces. Experienced in MCU firmware development, board layout, and time-series telemetry analysis.
+          </p>
 
-    <div class="carousel-slide">
-      <img src="assets/images/UltimateBanana.JPEG" alt="Me playing Ultimate Banana">
-      <p class="carousel-caption">I love random games descriptions.</p>
-    </div>
+          <!-- Interactive Carousel -->
+          <div class="carousel-container" id="about-carousel">
+            <div class="carousel-slide active">
+              <img src="assets/images/ManUGameFam.JPEG" alt="My Family">
+              <p class="carousel-caption">My family description.</p>
+            </div>
 
-    <div class="carousel-slide">
-      <img src="assets/images/PronouncedJentree.JPEG" alt="Pronounced Jentree">
-      <p class="carousel-caption">Pronounced Jentree description.</p>
-    </div>
+            <div class="carousel-slide">
+              <img src="assets/images/UltimateBanana.JPEG" alt="Me playing Ultimate Banana">
+              <p class="carousel-caption">I love random games descriptions.</p>
+            </div>
 
-    <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous Slide">&#10094;</button>
-    <button class="carousel-btn next" id="carousel-next" aria-label="Next Slide">&#10095;</button>
+            <div class="carousel-slide">
+              <img src="assets/images/PronouncedJentree.JPEG" alt="Pronounced Jentree">
+              <p class="carousel-caption">Pronounced Jentree description.</p>
+            </div>
 
-    <div class="carousel-dots" id="carousel-dots"></div>
-  </div>
-</section>
+            <button class="carousel-btn prev" id="carousel-prev" aria-label="Previous Slide">&#10094;</button>
+            <button class="carousel-btn next" id="carousel-next" aria-label="Next Slide">&#10095;</button>
+
+            <div class="carousel-dots" id="carousel-dots"></div>
+          </div>
+        </section>
+
         <!-- Integrated Resume Section -->
         <section id="resume" class="section-content">
           <h2 class="section-title">Resume</h2>
@@ -134,10 +141,9 @@
 
         <!-- Projects Grid Section -->
         <section id="projects" class="section-content">
-          <h2 class="section-title">Projects</h2>
+          <h2 class="section-title">Projects Overview</h2>
           <div class="project-grid">
             
-            <!-- Project Card 1 -->
             <article class="project-card" data-project-id="omniblade">
               <div class="project-thumb"></div>
               <div class="project-info">
@@ -151,7 +157,6 @@
               </div>
             </article>
 
-            <!-- Project Card 2 -->
             <article class="project-card" data-project-id="cable-tester">
               <div class="project-thumb"></div>
               <div class="project-info">
@@ -165,7 +170,6 @@
               </div>
             </article>
 
-            <!-- Project Card 3 -->
             <article class="project-card" data-project-id="gait-analysis">
               <div class="project-thumb"></div>
               <div class="project-info">
@@ -201,9 +205,7 @@
   <div class="modal-overlay" id="project-modal">
     <div class="modal-container">
       <button class="modal-close" id="modal-close">&times;</button>
-      <div id="modal-body">
-        <!-- Content injected dynamically via JavaScript -->
-      </div>
+      <div id="modal-body"></div>
     </div>
   </div>
 
