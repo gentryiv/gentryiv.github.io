@@ -218,6 +218,15 @@ body {
 }
 
 /* Home Hero Landing */
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  padding: 0;
+}
+
 .hero-image-container {
   width: 100%;
   max-width: 520px;
@@ -227,17 +236,13 @@ body {
 }
 
 .hero-img-fade {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-  object-fit: contain;
-  transform: scale(0.92);
-  display: block;
-  margin: 0 auto;
-
-  /* Extended linear mask for a gradual blend */
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 98%);
+  max-height: 460px;
+  object-fit: cover;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 55%, rgba(0, 0, 0, 0) 100%);
 }
 
 .hero-heading {
