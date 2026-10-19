@@ -23,6 +23,10 @@ const projectData = {
   }
 };
 
+// Global references for tab-aware timer management
+let startCarouselTimer = null;
+let stopCarouselTimer = null;
+
 // Carousel Function Definition
 function initCarousel() {
   const slides = document.querySelectorAll(".carousel-slide");
@@ -34,7 +38,7 @@ function initCarousel() {
   if (!slides.length || !dotsContainer) return;
 
   let currentIndex = 0;
-  let slideInterval;
+  let slideInterval = null;
 
   // Clear existing dots to prevent duplication
   dotsContainer.innerHTML = "";
@@ -68,22 +72,32 @@ function initCarousel() {
   function nextSlide() {
     currentIndex = (currentIndex + 1) % slides.length;
     updateSlides();
-    resetTimer();
   }
 
   function prevSlide() {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateSlides();
-    resetTimer();
   }
 
   function startTimer() {
-    slideInterval = setInterval(nextSlide, 10000);
+    if (!slideInterval) {
+      slideInterval = setInterval(nextSlide, 10000); // 10-second rotation interval
+    }
+  }
+
+  function stopTimer() {
+    if (slideInterval) {
+      clearInterval(slideInterval);
+      slideInterval = null;
+    }
   }
 
   function resetTimer() {
-    clearInterval(slideInterval);
-    startTimer();
+    stopTimer();
+    const aboutSection = document.getElementById("about");
+    if (aboutSection && aboutSection.classList.contains("active")) {
+      startTimer();
+    }
   }
 
   if (nextBtn && prevBtn) {
@@ -92,11 +106,17 @@ function initCarousel() {
   }
 
   if (carouselContainer) {
-    carouselContainer.addEventListener("mouseenter", () => clearInterval(slideInterval));
-    carouselContainer.addEventListener("mouseleave", startTimer);
+    carouselContainer.addEventListener("mouseenter", stopTimer);
+    carouselContainer.addEventListener("mouseleave", () => {
+      const aboutSection = document.getElementById("about");
+      if (aboutSection && aboutSection.classList.contains("active")) {
+        startTimer();
+      }
+    });
   }
 
-  startTimer();
+  startCarouselTimer = startTimer;
+  stopCarouselTimer = stopTimer;
 }
 
 // DOM Initialization
@@ -107,7 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalBody = document.getElementById("modal-body");
   const modalClose = document.getElementById("modal-close");
 
-  // Tab Navigation Handler
+  // Initialize carousel element references & event handlers
+  initCarousel();
+
+  // Tab Navigation Handler with Tab-Bound Carousel Lifecycle
   function switchTab(targetTab) {
     sections.forEach(sec => sec.classList.remove("active"));
     document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
@@ -123,6 +146,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.location.hash = targetTab;
+
+    // Start timer strictly on 'about' tab, clear on all other tabs
+    if (targetTab === "about") {
+      if (startCarouselTimer) startCarouselTimer();
+    } else {
+      if (stopCarouselTimer) stopCarouselTimer();
+    }
   }
 
   navLinks.forEach(link => {
@@ -137,6 +167,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const initialHash = window.location.hash.replace("#", "");
   if (initialHash && document.getElementById(initialHash)) {
     switchTab(initialHash);
+  } else {
+    // Default Home view: ensure timer is dormant on landing
+    if (stopCarouselTimer) stopCarouselTimer();
   }
 
   // Modal Render Logic
@@ -153,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     modalBody.innerHTML = `
-      <h2 style="font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.5rem;">${data.title}</h2>
+      <h2 style="font-size: 1.5rem; color: var(--gt-navy); font-weight: 700; margin-bottom: 0.5rem;">${data.title}</h2>
       <div class="project-tags" style="margin-bottom: 1rem;">
         ${data.tags.map(t => `<span class="tag">${t}</span>`).join("")}
       </div>
@@ -161,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7;">
         ${data.description}
       </p>
-      <a href="${data.repoUrl}" target="_blank" style="display: inline-block; background: var(--accent-blue); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+      <a href="${data.repoUrl}" target="_blank" style="display: inline-block; background: var(--gt-navy); color: var(--gt-gold); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
         View Repository on GitHub
       </a>
     `;
@@ -191,7 +224,5 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
   });
-
-  // Execute Carousel Logic
-  initCarousel();
+});
 });
