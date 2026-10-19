@@ -68,15 +68,17 @@ function initCarousel() {
   function nextSlide() {
     currentIndex = (currentIndex + 1) % slides.length;
     updateSlides();
+    resetTimer();
   }
 
   function prevSlide() {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateSlides();
+    resetTimer();
   }
 
   function startTimer() {
-    slideInterval = setInterval(nextSlide, 5000);
+    slideInterval = setInterval(nextSlide, 10000);
   }
 
   function resetTimer() {
