@@ -23,168 +23,171 @@ const projectData = {
   }
 };
 
-function initApp() {
-  // DOM Elements Selection
-  const navLinks = document.querySelectorAll("[data-tab]");
+// Global Carousel Functions (populated by setupCarousel)
+window.startCarousel = null;
+window.stopCarousel = null;
+
+// --- 1. CORE TAB SWITCHING (FAIL-SAFE & ISOLATED) ---
+function switchTab(targetTab) {
+  if (!targetTab) return;
+
+  // 1. Toggle section visibility
   const sections = document.querySelectorAll(".section-content");
-  const modal = document.getElementById("project-modal");
-  const modalBody = document.getElementById("modal-body");
-  const modalClose = document.getElementById("modal-close");
-
-  // Carousel State Variables
-  let carouselInterval = null;
-  let currentSlideIndex = 0;
-
-  const slides = document.querySelectorAll(".carousel-slide");
-  const dotsContainer = document.getElementById("carousel-dots");
-  const prevBtn = document.getElementById("carousel-prev");
-  const nextBtn = document.getElementById("carousel-next");
-  const carouselContainer = document.getElementById("about-carousel");
-
-  // --- Carousel Helper Functions ---
-  function updateCarouselDisplay() {
-    if (!slides.length) return;
-    slides.forEach((slide, idx) => {
-      slide.classList.toggle("active", idx === currentSlideIndex);
-    });
-    if (dotsContainer) {
-      const dots = dotsContainer.querySelectorAll(".dot");
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle("active", idx === currentSlideIndex);
-      });
-    }
-  }
-
-  function nextSlide() {
-    if (!slides.length) return;
-    currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-    updateCarouselDisplay();
-  }
-
-  function prevSlide() {
-    if (!slides.length) return;
-    currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-    updateCarouselDisplay();
-  }
-
-  function startCarousel() {
-    if (!slides.length) return;
-    if (!carouselInterval) {
-      carouselInterval = setInterval(nextSlide, 10000); // 10-second rotation
-    }
-  }
-
-  function stopCarousel() {
-    if (carouselInterval) {
-      clearInterval(carouselInterval);
-      carouselInterval = null;
-    }
-  }
-
-  function resetCarouselTimer() {
-    stopCarousel();
-    const aboutSection = document.getElementById("about");
-    if (aboutSection && aboutSection.classList.contains("active")) {
-      startCarousel();
-    }
-  }
-
-  // Initialize Carousel Dots & Buttons
-  if (slides.length && dotsContainer) {
-    dotsContainer.innerHTML = "";
-    slides.forEach((_, idx) => {
-      const dot = document.createElement("span");
-      dot.classList.add("dot");
-      if (idx === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => {
-        currentSlideIndex = idx;
-        updateCarouselDisplay();
-        resetCarouselTimer();
-      });
-      dotsContainer.appendChild(dot);
-    });
-  }
-
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      prevSlide();
-      resetCarouselTimer();
-    });
-  }
-
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      nextSlide();
-      resetCarouselTimer();
-    });
-  }
-
-  if (carouselContainer) {
-    carouselContainer.addEventListener("mouseenter", stopCarousel);
-    carouselContainer.addEventListener("mouseleave", () => {
-      const aboutSection = document.getElementById("about");
-      if (aboutSection && aboutSection.classList.contains("active")) {
-        startCarousel();
-      }
-    });
-  }
-
-  // --- Core Tab Switcher Logic ---
-  function switchTab(targetTab) {
-    if (!targetTab) return;
-
-    // Deactivate all sections & navigation links
-    sections.forEach(sec => sec.classList.remove("active"));
-    document.querySelectorAll(".nav-link").forEach(link => link.classList.remove("active"));
-
-    // Activate target section
-    const activeSection = document.getElementById(targetTab);
-    if (activeSection) {
-      activeSection.classList.add("active");
-    }
-
-    // Activate active navigation link state
-    const activeNavLinks = document.querySelectorAll(`.nav-link[data-tab="${targetTab}"]`);
-    activeNavLinks.forEach(link => link.classList.add("active"));
-
-    // Update URL hash without causing viewport scrolling jumps
-    if (history.pushState) {
-      history.pushState(null, null, `#${targetTab}`);
+  sections.forEach(sec => {
+    if (sec.id === targetTab) {
+      sec.classList.add("active");
     } else {
-      window.location.hash = targetTab;
+      sec.classList.remove("active");
     }
-
-    // Manage carousel lifecycle based on current tab
-    if (targetTab === "about") {
-      startCarousel();
-    } else {
-      stopCarousel();
-    }
-  }
-
-  // Attach event listeners to all navigation tab links
-  navLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const tab = link.getAttribute("data-tab");
-      if (tab) {
-        switchTab(tab);
-      }
-    });
   });
 
-  // Handle Initial Load Hash or Default to Home
+  // 2. Toggle navigation link active state
+  const navLinks = document.querySelectorAll(".nav-link");
+  navLinks.forEach(link => {
+    if (link.getAttribute("data-tab") === targetTab) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+
+  // 3. Update URL hash without page scroll jumps
+  try {
+    history.pushState(null, null, `#${targetTab}`);
+  } catch (e) {
+    window.location.hash = targetTab;
+  }
+
+  // 4. Manage carousel lifecycle based on tab
+  if (targetTab === "about") {
+    if (typeof window.startCarousel === "function") window.startCarousel();
+  } else {
+    if (typeof window.stopCarousel === "function") window.stopCarousel();
+  }
+}
+
+function setupTabSwitching() {
+  // Global Event Delegation for Nav Links
+  document.addEventListener("click", (e) => {
+    const tabLink = e.target.closest("[data-tab]");
+    if (tabLink) {
+      e.preventDefault();
+      const targetTab = tabLink.getAttribute("data-tab");
+      switchTab(targetTab);
+    }
+  });
+
+  // Handle browser Back/Forward navigation
+  window.addEventListener("popstate", () => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash && document.getElementById(hash)) {
+      switchTab(hash);
+    } else {
+      switchTab("home");
+    }
+  });
+
+  // Initial Load Tab Resolution
   const initialHash = window.location.hash.replace("#", "");
   if (initialHash && document.getElementById(initialHash)) {
     switchTab(initialHash);
   } else {
     switchTab("home");
   }
+}
 
-  // --- Modal Logic ---
-  function openProjectModal(projectId) {
+// --- 2. CAROUSEL COMPONENT (ISOLATED) ---
+function setupCarousel() {
+  const slides = document.querySelectorAll(".carousel-slide");
+  const dotsContainer = document.getElementById("carousel-dots");
+  const prevBtn = document.getElementById("carousel-prev");
+  const nextBtn = document.getElementById("carousel-next");
+  const carouselContainer = document.getElementById("about-carousel");
+
+  if (!slides.length) return;
+
+  let currentIndex = 0;
+  let intervalId = null;
+
+  function showSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === currentIndex);
+    });
+    if (dotsContainer) {
+      const dots = dotsContainer.querySelectorAll(".dot");
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentIndex);
+      });
+    }
+  }
+
+  function nextSlide() { showSlide(currentIndex + 1); }
+  function prevSlide() { showSlide(currentIndex - 1); }
+
+  function start() {
+    if (!intervalId) {
+      intervalId = setInterval(nextSlide, 10000); // 10s rotation
+    }
+  }
+
+  function stop() {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+  }
+
+  function reset() {
+    stop();
+    const aboutSec = document.getElementById("about");
+    if (aboutSec && aboutSec.classList.contains("active")) {
+      start();
+    }
+  }
+
+  // Create dot indicators
+  if (dotsContainer) {
+    dotsContainer.innerHTML = "";
+    slides.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.className = "dot" + (i === 0 ? " active" : "");
+      dot.addEventListener("click", () => {
+        showSlide(i);
+        reset();
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  if (prevBtn) prevBtn.addEventListener("click", () => { prevSlide(); reset(); });
+  if (nextBtn) nextBtn.addEventListener("click", () => { nextSlide(); reset(); });
+
+  if (carouselContainer) {
+    carouselContainer.addEventListener("mouseenter", stop);
+    carouselContainer.addEventListener("mouseleave", () => {
+      const aboutSec = document.getElementById("about");
+      if (aboutSec && aboutSec.classList.contains("active")) {
+        start();
+      }
+    });
+  }
+
+  window.startCarousel = start;
+  window.stopCarousel = stop;
+}
+
+// --- 3. MODAL COMPONENT (ISOLATED) ---
+function setupModal() {
+  const modal = document.getElementById("project-modal");
+  const modalBody = document.getElementById("modal-body");
+  const modalClose = document.getElementById("modal-close");
+
+  if (!modal || !modalBody) return;
+
+  function openModal(projectId) {
     const data = projectData[projectId];
-    if (!data || !modal || !modalBody) return;
+    if (!data) return;
 
     let videoHTML = "";
     if (data.youtubeId) {
@@ -212,33 +215,37 @@ function initApp() {
   }
 
   function closeModal() {
-    if (modal) modal.classList.remove("active");
-    if (modalBody) modalBody.innerHTML = "";
+    modal.classList.remove("active");
+    modalBody.innerHTML = "";
   }
 
-  document.querySelectorAll("[data-project-id]").forEach(element => {
-    element.addEventListener("click", (e) => {
+  document.addEventListener("click", (e) => {
+    const card = e.target.closest("[data-project-id]");
+    if (card) {
       e.stopPropagation();
-      const projectId = element.getAttribute("data-project-id");
-      openProjectModal(projectId);
-    });
+      const projectId = card.getAttribute("data-project-id");
+      openModal(projectId);
+    }
   });
 
   if (modalClose) modalClose.addEventListener("click", closeModal);
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-  }
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeModal();
   });
 }
 
-// Execution Guard ensuring initialization runs regardless of DOM readiness state
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initApp);
-} else {
-  initApp();
+// --- INITIALIZATION ENTRY POINT ---
+function init() {
+  try { setupTabSwitching(); } catch (e) { console.error("Tab setup error:", e); }
+  try { setupCarousel(); } catch (e) { console.error("Carousel setup error:", e); }
+  try { setupModal(); } catch (e) { console.error("Modal setup error:", e); }
 }
-});
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}
