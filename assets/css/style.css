@@ -328,7 +328,7 @@ mask-composite: intersect;
 
 .carousel-btn {
   position: absolute;
-  top: 45%;
+  top: calc(1.25rem + 210px); /* Locks vertical center precisely to image midpoint (1.25rem padding + 210px half-height) */
   transform: translateY(-50%);
   background: var(--gt-navy);
   border: none;
@@ -385,6 +385,7 @@ mask-composite: intersect;
   content: "";
   position: absolute;
   left: calc(-1.5rem - 5px);
+  transform: translateX(-50%); /* Centers dot horizontally over line */
   top: 6px;
   width: 8px;
   height: 8px;
