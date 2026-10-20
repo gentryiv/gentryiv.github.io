@@ -313,7 +313,7 @@ mask-composite: intersect;
 
 .carousel-slide img {
   width: 100%;
-  height: 420px;
+  height: 500px;
   object-fit: cover;
   border-radius: var(--radius-sm);
 }
@@ -328,7 +328,7 @@ mask-composite: intersect;
 
 .carousel-btn {
   position: absolute;
-  top: calc(1.25rem + 210px); /* Locks vertical center precisely to image midpoint (1.25rem padding + 210px half-height) */
+  top: calc(1.25rem + 250px); /* Locks vertical center precisely to image midpoint (1.25rem padding + 210px half-height) */
   transform: translateY(-50%);
   background: var(--gt-navy);
   border: none;
