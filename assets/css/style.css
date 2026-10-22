@@ -328,15 +328,15 @@ body {
 }
 
 .carousel-btn {
-  /* general location */
+  /* general button */
   position: absolute;
   top: calc(1.25rem + 250px);
   transform: translateY(-50%);
   font-size: 1.2rem;
+  border: none;
   
   /* navy circle */
   background: var(--gt-navy);
-  border: none;
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -345,6 +345,7 @@ body {
   /* gold arrow */
   color: var(--gt-gold);
   align-items: center;
+  justify-content: center;
   
   cursor: pointer;
   transition: background var(--transition-fast), color var(--transition-fast);
