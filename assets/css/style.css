@@ -328,19 +328,25 @@ body {
 }
 
 .carousel-btn {
+  /* general location */
   position: absolute;
-  top: calc(1.25rem + 250px); /* Locks vertical center precisely to image midpoint */
+  top: calc(1.25rem + 250px);
   transform: translateY(-50%);
+  font-size: 1.2rem;
+  
+  /* navy circle */
   background: var(--gt-navy);
   border: none;
-  margin-top: -2px;
-  color: var(--gt-gold);
-  font-size: 1.2rem;
   width: 42px;
   height: 42px;
-  padding: 0;
-  cursor: pointer;
   border-radius: 50%;
+  padding: 0;
+  
+  /* gold arrow */
+  color: var(--gt-gold);
+  align-items: center;
+  
+  cursor: pointer;
   transition: background var(--transition-fast), color var(--transition-fast);
   z-index: 10;
 }
