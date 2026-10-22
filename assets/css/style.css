@@ -346,6 +346,7 @@ body {
   color: var(--gt-gold);
   align-items: center;
   justify-content: center;
+  line-height: 1;
   
   cursor: pointer;
   transition: background var(--transition-fast), color var(--transition-fast);
