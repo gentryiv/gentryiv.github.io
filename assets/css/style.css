@@ -344,8 +344,6 @@ body {
   
   /* gold arrow */
   color: var(--gt-gold);
-  align-items: center;
-  justify-content: center;
   line-height: 1;
   
   cursor: pointer;
