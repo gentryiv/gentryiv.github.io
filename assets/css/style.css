@@ -356,8 +356,8 @@ body {
   color: var(--gt-navy);
 }
 
-.carousel-btn.prev { left: 0.75rem; }
-.carousel-btn.next { right: 0.75rem; }
+.carousel-btn.prev { left: 1.25rem; }
+.carousel-btn.next { right: 1.25rem; }
 
 .carousel-dots {
   display: flex;
