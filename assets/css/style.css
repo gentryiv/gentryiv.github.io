@@ -384,10 +384,11 @@ mask-composite: intersect;
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: 5px;
+  left: calc(-1.5rem - 1px); /* Pulls dot left across the 1.5rem padding to the line */
+  transform: translateX(-50%); /* Centers the dot width over the 2px line */
   top: 6px;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--gt-navy);
   border: 2px solid var(--gt-gold);
