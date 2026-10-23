@@ -8,7 +8,7 @@ const projectData = {
   },
   
   "cable-tester": {
-    title: "SAMD20 Ten-Pin Cable Tester",
+    title: "Cable Tester",
     description: "Refactored firmware for automated diagnostic testing of ten-pin cables. Implemented SysTick timers, Watchdog routines, and precise GPIO pin masking via SAM register manipulation.",
     youtubeId: "",
     repoUrl: "https://github.com/gentryiv"
@@ -30,30 +30,26 @@ const projectData = {
   }
 
   "senior-design": {
-    title: "",
-    description: "",
-    youtubeId: "",
+    title: "WISE: Wireless Integrated Sensing for Exoskeletons",
+    description: "placeholder",
     repoUrl: "https://github.com/gentryiv"
   },
 
   "laptop-display": {
-    title: "",
-    description: "",
-    youtubeId: "",
+    title: "[In Progress] Old Laptop -> Wall Mount Display",
+    description: "placeholder",
     repoUrl: "https://github.com/gentryiv"
   },
 
   "arcade": {
-    title: "",
-    description: "",
-    youtubeId: "",
+    title: "Embedded Arcade Game",
+    description: "placeholder",
     repoUrl: "https://github.com/gentryiv"
   },
 
   "buck-converter": {
-    title: "",
-    description: "",
-    youtubeId: "",
+    title: "Buck Converter",
+    description: "placeholder",
     repoUrl: "https://github.com/gentryiv"
   },
 };
