@@ -22,7 +22,7 @@ const projectData = {
       The program runs in under a minute and is fully automated. \n Future enhancements could include run scheduling, item images in emailed output, grocery lists with cart cost
       comparisons to other stores, deal trend tracking, and an automated notification system for desired deals or when a certain threshold of liked BoGo's is reached to make a trip worthwhile.`,
     repoUrl: "https://github.com/gentryiv/Publix-BoGo-Scraper"
-  }
+  },
   "fixing": {
     title: "Fixing Things",
     description: `I'm a pretty DIY guy so I do a lot of stuff myself: I've recovered data from a bricked 2011 iMac, fixed different hardware failures on xbox controllers, do most of my own car work,
