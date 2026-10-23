@@ -10,7 +10,6 @@ const projectData = {
   "cable-tester": {
     title: "Cable Tester",
     description: "Refactored firmware for automated diagnostic testing of ten-pin cables. Implemented SysTick timers, Watchdog routines, and precise GPIO pin masking via SAM register manipulation.",
-    youtubeId: "",
     repoUrl: "https://github.com/gentryiv"
   },
   
