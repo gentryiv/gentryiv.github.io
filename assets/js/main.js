@@ -4,7 +4,7 @@ const projectData = {
     title: "OmniBlade Adaptive Gesture Controller",
     description: `Built an adaptive wearable game controller housed in a 3D-printed forearm brace. Sensor fusion algorithms process 6-axis IMU data to convert upper-limb 
     gestures into low-latency game commands over Bluetooth.`,
-    youtubeId: "https://www.youtube.com/watch?v=4rHZ7DJ21A4&time_continue=155&source_ve_path=NzY3NTg&embeds_referring_euri=https%3A%2F%2Fdevpost.com%2F",
+    youtubeId: "4rHZ7DJ21A4",
     repoUrl: "https://github.com/gentryiv/Omniblade"
   },
   "cable-tester": {
@@ -16,17 +16,17 @@ const projectData = {
   "publix-scraper": {
     title: "Publix BoGo Scraper",
     description: `I love BoGo's. As a freshman, I wanted to learn coding beyond what I was already learning in my programming class. I also wanted to build something useful. 
-      So, over that winter break I built this Publix BoGo Scraper that navigates the Publix site, selects a store, scrapes that stores BoGos, filters them based on the user's 
-      liked/disliked history, and then sends the user an email with the BoGo's relevant to them. \n The program is written in Python and uses XPath points alongside a wait function 
-      and try/except blocks to navigate the site. Data is handled via pandas and then exported via Python's smtplib with a separate program feeding it username and password credentials.
-      The program runs in under a minute and is fully automated. \n Future enhancements could include run scheduling, item images in emailed output, grocery lists with cart cost
-      comparisons to other stores, deal trend tracking, and an automated notification system for desired deals or when a certain threshold of liked BoGo's is reached to make a trip worthwhile.`,
+    So, over that winter break I built this Publix BoGo Scraper that navigates the Publix site, selects a store, scrapes that store's BoGos, filters them based on the user's 
+    liked/disliked history, and then sends the user an email with the BoGos relevant to them. The program is written in Python and uses XPath points alongside a wait function 
+    and try/except blocks to navigate the site. Data is handled via pandas and then exported via Python's smtplib with a separate program feeding it username and password credentials. The program runs in under a minute and is fully automated.
+    Future enhancements could include run scheduling, item images in emailed output, grocery lists with cart cost comparisons to other stores, deal trend tracking, 
+    and an automated notification system for desired deals or when a certain threshold of liked BoGos is reached to make a trip worthwhile.`,
     repoUrl: "https://github.com/gentryiv/Publix-BoGo-Scraper"
   },
   "fixing": {
     title: "Fixing Things",
-    description: `I'm a pretty DIY guy so I do a lot of stuff myself: I've recovered data from a bricked 2011 iMac, fixed different hardware failures on xbox controllers, do most of my own car work,
-    fixed a bambu labs printer, fixed a speaker, and random stuff my mom asks me to fix around the house.`,
+    description: `I'm a pretty DIY guy so I do a lot of stuff myself: I've recovered data from a bricked 2011 iMac, fixed different hardware failures on Xbox controllers, 
+    do most of my own car work, fixed a Bambu Lab printer, fixed a speaker, and random stuff my mom asks me to fix around the house.`
   }
 };
 
@@ -38,7 +38,6 @@ window.stopCarousel = null;
 function switchTab(targetTab) {
   if (!targetTab) return;
 
-  // 1. Toggle section visibility
   const sections = document.querySelectorAll(".section-content");
   sections.forEach(sec => {
     if (sec.id === targetTab) {
@@ -48,7 +47,6 @@ function switchTab(targetTab) {
     }
   });
 
-  // 2. Toggle navigation link active state
   const navLinks = document.querySelectorAll(".nav-link");
   navLinks.forEach(link => {
     if (link.getAttribute("data-tab") === targetTab) {
@@ -58,14 +56,12 @@ function switchTab(targetTab) {
     }
   });
 
-  // 3. Update URL hash without page scroll jumps
   try {
     history.pushState(null, null, `#${targetTab}`);
   } catch (e) {
     window.location.hash = targetTab;
   }
 
-  // 4. Manage carousel lifecycle based on tab
   if (targetTab === "about") {
     if (typeof window.startCarousel === "function") window.startCarousel();
   } else {
@@ -74,7 +70,6 @@ function switchTab(targetTab) {
 }
 
 function setupTabSwitching() {
-  // Global Event Delegation for Nav Links
   document.addEventListener("click", (e) => {
     const tabLink = e.target.closest("[data-tab]");
     if (tabLink) {
@@ -84,7 +79,6 @@ function setupTabSwitching() {
     }
   });
 
-  // Handle browser Back/Forward navigation
   window.addEventListener("popstate", () => {
     const hash = window.location.hash.replace("#", "");
     if (hash && document.getElementById(hash)) {
@@ -94,7 +88,6 @@ function setupTabSwitching() {
     }
   });
 
-  // Initial Load Tab Resolution
   const initialHash = window.location.hash.replace("#", "");
   if (initialHash && document.getElementById(initialHash)) {
     switchTab(initialHash);
@@ -134,7 +127,7 @@ function setupCarousel() {
 
   function start() {
     if (!intervalId) {
-      intervalId = setInterval(nextSlide, 10000); // 10s rotation
+      intervalId = setInterval(nextSlide, 10000);
     }
   }
 
@@ -153,7 +146,6 @@ function setupCarousel() {
     }
   }
 
-  // Create dot indicators
   if (dotsContainer) {
     dotsContainer.innerHTML = "";
     slides.forEach((_, i) => {
@@ -184,7 +176,7 @@ function setupCarousel() {
   window.stopCarousel = stop;
 }
 
-// --- 3. MODAL COMPONENT (ISOLATED) ---
+// --- 3. MODAL COMPONENT (NO TAGS) ---
 function setupModal() {
   const modal = document.getElementById("project-modal");
   const modalBody = document.getElementById("modal-body");
@@ -204,18 +196,21 @@ function setupModal() {
         </div>`;
     }
 
+    let repoHTML = "";
+    if (data.repoUrl) {
+      repoHTML = `
+        <a href="${data.repoUrl}" target="_blank" style="display: inline-block; background: var(--gt-navy); color: var(--gt-gold); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+          View Repository on GitHub
+        </a>`;
+    }
+
     modalBody.innerHTML = `
       <h2 style="font-size: 1.5rem; color: var(--gt-navy); font-weight: 700; margin-bottom: 0.5rem;">${data.title}</h2>
-      <div class="project-tags" style="margin-bottom: 1rem;">
-        ${data.tags.map(t => `<span class="tag">${t}</span>`).join("")}
-      </div>
       ${videoHTML}
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7;">
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.7; white-space: pre-line;">
         ${data.description}
       </p>
-      <a href="${data.repoUrl}" target="_blank" style="display: inline-block; background: var(--gt-navy); color: var(--gt-gold); padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
-        View Repository on GitHub
-      </a>
+      ${repoHTML}
     `;
 
     modal.classList.add("active");
