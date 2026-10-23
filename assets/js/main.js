@@ -2,9 +2,10 @@
 const projectData = {
   "omniblade": {
     title: "OmniBlade Adaptive Gesture Controller",
-    description: "Built an adaptive wearable game controller housed in a 3D-printed forearm brace. Sensor fusion algorithms process 6-axis IMU data to convert upper-limb gestures into low-latency game commands over Bluetooth.",
-    youtubeId: "",
-    repoUrl: "https://github.com/gentryiv"
+    description: `Built an adaptive wearable game controller housed in a 3D-printed forearm brace. Sensor fusion algorithms process 6-axis IMU data to convert upper-limb 
+    gestures into low-latency game commands over Bluetooth.`,
+    youtubeId: "https://www.youtube.com/watch?v=4rHZ7DJ21A4&time_continue=155&source_ve_path=NzY3NTg&embeds_referring_euri=https%3A%2F%2Fdevpost.com%2F",
+    repoUrl: "https://github.com/gentryiv/Omniblade"
   },
   "cable-tester": {
     title: "SAMD20 Ten-Pin Cable Tester",
@@ -22,7 +23,7 @@ const projectData = {
       comparisons to other stores, deal trend tracking, and an automated notification system for desired deals or when a certain threshold of liked BoGo's is reached to make a trip worthwhile.`,
     repoUrl: "https://github.com/gentryiv/Publix-BoGo-Scraper"
   }
-    "fixing": {
+  "fixing": {
     title: "Fixing Things",
     description: `I'm a pretty DIY guy so I do a lot of stuff myself: I've recovered data from a bricked 2011 iMac, fixed different hardware failures on xbox controllers, do most of my own car work,
     fixed a bambu labs printer, and random stuff my mom asks me to fix around the house.`,
