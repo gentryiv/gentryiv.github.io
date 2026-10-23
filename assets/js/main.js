@@ -26,7 +26,7 @@ const projectData = {
   "fixing": {
     title: "Fixing Things",
     description: `I'm a pretty DIY guy so I do a lot of stuff myself: I've recovered data from a bricked 2011 iMac, fixed different hardware failures on xbox controllers, do most of my own car work,
-    fixed a bambu labs printer, and random stuff my mom asks me to fix around the house.`,
+    fixed a bambu labs printer, fixed a speaker, and random stuff my mom asks me to fix around the house.`,
   }
 };
 
