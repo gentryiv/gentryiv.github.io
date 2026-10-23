@@ -23,7 +23,7 @@ const projectData = {
       and try/except blocks to navigate the site. Data is handled via pandas and then exported via Python's smtplib with a separate program feeding it username and password credentials.
       The program runs in under a minute and is fully automated. \n Future enhancements could include run scheduling, item images in emailed output, grocery lists with cart cost
       comparisons to other stores, deal trend tracking, and an automated notification system for desired deals or when a certain threshold of liked BoGo's is reached to make a trip worthwhile.`,
-    repoUrl: "https://github.com/gentryiv"
+    repoUrl: "https://github.com/gentryiv/Publix-BoGo-Scraper"
   }
 };
 
