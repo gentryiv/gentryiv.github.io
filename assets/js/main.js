@@ -2,31 +2,29 @@
 const projectData = {
   "omniblade": {
     title: "OmniBlade Adaptive Gesture Controller",
-    description: `Built an adaptive wearable game controller housed in a 3D-printed forearm brace. Sensor fusion algorithms process 6-axis IMU data to convert upper-limb 
-    gestures into low-latency game commands over Bluetooth.`,
+    description: `Built an adaptive wearable game controller housed in a 3D-printed forearm brace. Sensor fusion algorithms process 6-axis IMU data to convert upper-limb gestures into low-latency game commands over Bluetooth.`,
     youtubeId: "4rHZ7DJ21A4",
     repoUrl: "https://github.com/gentryiv/Omniblade"
   },
+  
   "cable-tester": {
     title: "SAMD20 Ten-Pin Cable Tester",
     description: "Refactored firmware for automated diagnostic testing of ten-pin cables. Implemented SysTick timers, Watchdog routines, and precise GPIO pin masking via SAM register manipulation.",
     youtubeId: "",
     repoUrl: "https://github.com/gentryiv"
   },
+  
   "publix-scraper": {
     title: "Publix BoGo Scraper",
     description: `I love BoGo's. As a freshman, I wanted to learn coding beyond what I was already learning in my programming class. I also wanted to build something useful. 
-    So, over that winter break I built this Publix BoGo Scraper that navigates the Publix site, selects a store, scrapes that store's BoGos, filters them based on the user's 
-    liked/disliked history, and then sends the user an email with the BoGos relevant to them. The program is written in Python and uses XPath points alongside a wait function 
-    and try/except blocks to navigate the site. Data is handled via pandas and then exported via Python's smtplib with a separate program feeding it username and password credentials. The program runs in under a minute and is fully automated.
-    Future enhancements could include run scheduling, item images in emailed output, grocery lists with cart cost comparisons to other stores, deal trend tracking, 
-    and an automated notification system for desired deals or when a certain threshold of liked BoGos is reached to make a trip worthwhile.`,
+    So, over that winter break I built this Publix BoGo Scraper that navigates the Publix site, selects a store, scrapes that store's BoGos, filters them based on the user's liked/disliked history, and then sends the user an email with the BoGos relevant to them. The program is written in Python and uses XPath points alongside a wait function and try/except blocks to navigate the site. Data is handled via pandas and then exported via Python's smtplib with a separate program feeding it username and password credentials. The program runs in under a minute and is fully automated.
+    Future enhancements could include run scheduling, item images in emailed output, grocery lists with cart cost comparisons to other stores, deal trend tracking, and an automated notification system for desired deals or when a certain threshold of liked BoGos is reached to make a trip worthwhile.`,
     repoUrl: "https://github.com/gentryiv/Publix-BoGo-Scraper"
   },
+  
   "fixing": {
     title: "Fixing Things",
-    description: `I'm a pretty DIY guy so I do a lot of stuff myself: I've recovered data from a bricked 2011 iMac, fixed different hardware failures on Xbox controllers, 
-    do most of my own car work, fixed a Bambu Lab printer, fixed a speaker, and random stuff my mom asks me to fix around the house.`
+    description: `I'm a pretty DIY guy so I do a lot of stuff myself: I've recovered data from a bricked 2011 iMac, fixed different hardware failures on Xbox controllers, do most of my own car work, fixed a Bambu Lab printer, fixed a speaker, and random stuff my mom asks me to fix around the house.`
   }
 };
 
