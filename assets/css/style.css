@@ -325,6 +325,13 @@ body {
   color: var(--text-muted);
   line-height: 1.4;
   font-weight: 500;
+
+  /* Lock height to accommodate up to 3 lines of text consistently */
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .carousel-btn {
