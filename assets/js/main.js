@@ -42,7 +42,7 @@ Future enhancements could include run scheduling, item images in emailed output,
 
   "arcade": {
     title: "Embedded Arcade Game",
-    description: "Built a little game player with a joystick and 3 buttons for inputs and coded a game to go with it where a turkey collects foods while an evil pill chases it. The buttons add different effects to the game such as changing the game speed or switching to an inverted high contrast mode.",
+    description: "Built a fun little game player with a joystick and 4 buttons for inputs; coded a game to go with it where a turkey collects food while avoiding the poisonous pill, plus a sentient pill that chases it. The buttons add different effects to the game such as changing the game speed, switching to an inverted high contrast mode, or pausing it.",
     youtubeId: "MOf9QYwM4ag",
     repoUrl: "https://github.com/gentryiv"
   },
