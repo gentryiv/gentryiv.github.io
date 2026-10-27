@@ -3,7 +3,7 @@ const projectData = {
   "omniblade": {
     title: "OmniBlade Adaptive Gesture Controller",
     description: `Built an adaptive wearable game controller housed in a 3D-printed forearm brace. Sensor fusion algorithms process 6-axis IMU data to convert upper-limb gestures into low-latency game commands over Bluetooth.`,
-    youtubeId: "4rHZ7DJ21A4",
+    youtubeId: "ngSVvp_IACE",
     repoUrl: "https://github.com/gentryiv/Omniblade"
   },
   
@@ -43,7 +43,7 @@ Future enhancements could include run scheduling, item images in emailed output,
   "arcade": {
     title: "Embedded Arcade Game",
     description: "Built a little game player with a joystick and 3 buttons for inputs and coded a game to go with it where a turkey collects foods while an evil pill chases it. The buttons add different effects to the game such as changing the game speed or switching to an inverted high contrast mode.",
-    youtubeId: "CawdBfiIcf0",
+    youtubeId: "MOf9QYwM4ag",
     repoUrl: "https://github.com/gentryiv"
   },
 
