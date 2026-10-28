@@ -10,7 +10,7 @@ const projectData = {
   "cable-tester": {
     title: "Cable Tester",
     description: "Refactored firmware for automated diagnostic testing of ten-pin cables. Implemented SysTick timers, Watchdog routines, and precise GPIO pin masking via SAM register manipulation.",
-    repoUrl: "https://github.com/gentryiv"
+    repoUrl: "https://github.com/gentryiv/CableTester"
   },
   
   "publix-scraper": {
@@ -30,27 +30,30 @@ Future enhancements could include run scheduling, item images in emailed output,
 
   "senior-design": {
     title: "WISE: Wireless Integrated Sensing for Exoskeletons",
-    description: "placeholder",
-    repoUrl: "https://github.com/gentryiv"
+    description: `In progress project
+
+      For my capstone design project at Georgia Tech, Calvin Hur, Pranjal Chatterjee, Sophia Wang, and I are building modular, wireless sensing units that can be integrated with exoskeleton designs for high performance, low cost units that have lighter, simpler, and overall better form factors.
+      `,
   },
 
   "laptop-display": {
-    title: "[In Progress] Old Laptop -> Wall Mount Display",
-    description: "placeholder",
-    repoUrl: "https://github.com/gentryiv"
+    title: "Old Laptop -> Wall Mount Display",
+    description: `In progress project
+    
+    I am taking apart an old laptop I have that is now too old to run (even running Linux its painfully slow) into a wall mounted display where I can show music I'm playing, my calendar, reminders, or whatever else I want.`,
   },
 
   "arcade": {
     title: "Embedded Arcade Game",
     description: "Built a fun little game player with a joystick and 4 buttons for inputs; coded a game to go with it where a turkey collects food while avoiding the poisonous pill, plus a sentient pill that chases it. The buttons add different effects to the game such as changing the game speed, switching to an inverted high contrast mode, or pausing it.",
     youtubeId: "MOf9QYwM4ag",
-    repoUrl: "https://github.com/gentryiv"
+    repoUrl: "https://github.com/gentryiv/TurkeyZombieRampage_Embedded-Arcade-Game"
   },
 
   "buck-converter": {
     title: "Buck Converter",
-    description: "placeholder",
-    repoUrl: "https://github.com/gentryiv"
+    description: "Designed a 24V input synchronous buck converter with selectable 12V, 5V, and 3.3V outputs at up to 3 A. Selected the LM5148 controller, external MOSFETs, current-sensing components, and feedback-network configurations using datasheets to guide component selection and circuit design. Developed the output-selection circuitry, opted for a 500 kHz switching freuency and a 5 mΩ current-sense resistor, and designed in both internal and external biasing circuits. Designed the PCB layout in Altium Designer, and hand-soldered it.
+",q
   }
 };
 
