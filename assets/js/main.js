@@ -52,8 +52,7 @@ Future enhancements could include run scheduling, item images in emailed output,
 
   "buck-converter": {
     title: "Buck Converter",
-    description: "Designed a 24V input synchronous buck converter with selectable 12V, 5V, and 3.3V outputs at up to 3 A. Selected the LM5148 controller, external MOSFETs, current-sensing components, and feedback-network configurations using datasheets to guide component selection and circuit design. Developed the output-selection circuitry, opted for a 500 kHz switching freuency and a 5 mΩ current-sense resistor, and designed in both internal and external biasing circuits. Designed the PCB layout in Altium Designer, and hand-soldered it.
-",q
+    description: "Designed a 24V input synchronous buck converter with selectable 12V, 5V, and 3.3V outputs at up to 3 A. Selected the LM5148 controller, external MOSFETs, current-sensing components, and feedback-network configurations using datasheets to guide component selection and circuit design. Developed the output-selection circuitry, opted for a 500 kHz switching freuency and a 5 mΩ current-sense resistor, and designed in both internal and external biasing circuits. Designed the PCB layout in Altium Designer, and hand-soldered it.",
   }
 };
 
